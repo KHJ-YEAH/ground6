@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)file:///C:/Users/hdec/Downloads/high5_wrapup_3.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIGH-5 · 12월 랩업 &amp; 시상식</title>
+<link href="./HIGH-5 · 12월 랩업 &amp; 시상식_files/css2" rel="stylesheet">
+<style>
+:root{
+  --navy:#08111F;--navy2:#0F1E35;--navy3:#162840;
+  --gold:#F0A500;--gold2:#FFD166;
+  --m1:#3B82F6;--m2:#8B5CF6;--m3:#F59E0B;--m4:#10B981;--m5:#EF4444;
+  --dec:#64748B;--decl:#F8FAFC;--decdark:#334155;
+  --bg:#F0F4F8;--card:#fff;--text:#0F172A;--sub:#475569;--muted:#94A3B8;--border:#E2E8F0;
+  --db-h:172px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);padding-top:var(--db-h);transition:padding-top .35s ease}
+
+/* ═══ DASHBOARD ══════════════════════════════ */
+.dashboard{position:fixed;top:0;left:0;right:0;z-index:500;background:linear-gradient(160deg,#060E1A 0%,#0C1B30 55%,#071525 100%);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 6px 40px rgba(0,0,0,.5);transition:transform .35s ease}
+.dashboard.hidden{transform:translateY(-100%)}
+.db-inner{max-width:100%;margin:0 auto;padding:0 32px}
+.db-topbar{display:flex;align-items:center;gap:14px;padding:9px 0;background:rgba(0,0,0,.2);border-bottom:1px solid rgba(255,255,255,.06)}
+.db-back{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.8);font-size:13px;font-weight:700;padding:6px 14px;border-radius:7px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;flex-shrink:0}
+.db-brand-main{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:1.5px;color:#fff}
+.db-brand-main span{color:var(--gold)}
+.db-brand-sub{font-size:9px;color:rgba(255,255,255,.3);letter-spacing:1px;margin-top:1px}
+.db-cells{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.dbc{padding:9px 14px;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;justify-content:center}
+.dbc:last-child{border-right:none}
+.dbc-lbl{font-size:11px;font-weight:700;letter-spacing:.4px;color:rgba(255,255,255,.38);margin-bottom:2px;white-space:nowrap}
+.dbc-val{font-size:28px;font-weight:900;line-height:1;letter-spacing:-1px}
+.u{font-size:13px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:0;margin-left:1px}
+.dbc-sub{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px;white-space:nowrap}
+.gold-v{color:var(--gold)}
+.s-row{display:flex;gap:3px;margin-top:4px}
+.sd{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(255,255,255,.07);color:rgba(255,255,255,.3)}
+.sd.on{background:var(--gold);color:var(--navy)}.sd.today{background:rgba(240,165,0,.22);color:var(--gold);border:1.5px solid var(--gold)}
+.db-mis{padding:9px 12px;border-right:1px solid rgba(255,255,255,.07)}
+.db-mis-lbl{font-size:11px;font-weight:700;color:rgba(255,255,255,.38);margin-bottom:5px}
+.mi-list{display:flex;flex-direction:column;gap:3px}
+.mi{display:flex;align-items:center}
+.mi-chk{width:17px;height:17px;border-radius:50%;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:8px;color:transparent;transition:all .2s;flex-shrink:0}
+.mi-chk.done{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.mi-txt{font-size:12px;color:rgba(255,255,255,.7);flex:1;padding-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mi-pts{font-size:12px;font-weight:700;color:var(--gold2);text-align:right;padding-left:10px;white-space:nowrap;flex-shrink:0;min-width:52px}
+.dbc-prog{padding:9px 12px;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;justify-content:center;position:relative}
+.db-pbar{height:6px;background:rgba(255,255,255,.1);border-radius:3px;margin:5px 0 3px;overflow:hidden}
+.db-pfill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.db-pbtn{font-size:11px;font-weight:700;color:rgba(255,255,255,.4);background:none;border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:2px 8px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;display:inline-block;width:fit-content;margin-top:2px}
+.prog-inline{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy2);border:1px solid rgba(255,255,255,.1);border-radius:0 0 10px 10px;padding:10px 14px;z-index:600;box-shadow:0 8px 32px rgba(0,0,0,.45)}
+.prog-inline.open{display:block}
+.pil-title{font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:8px}
+.pil-row{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.pil-row:last-child{margin-bottom:0}
+.pil-lbl{font-size:11px;color:rgba(255,255,255,.5);min-width:66px;flex-shrink:0}
+.pil-bw{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.pil-bf{height:100%;border-radius:3px}
+.pil-pct{font-size:11px;font-weight:700;color:rgba(255,255,255,.65);min-width:30px;text-align:right}
+.db-leader{padding:9px 12px;background:rgba(240,165,0,.06);border-left:1px solid rgba(240,165,0,.15)}
+.db-leader-lbl{font-size:11px;font-weight:700;color:rgba(240,165,0,.6);margin-bottom:4px}
+.lm-row{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:12px;color:rgba(255,255,255,.65)}
+.lm-av{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.13);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0}
+.lm-st{margin-left:auto;font-size:11px;font-weight:700}
+.lm-done{color:#34D399}.lm-todo{color:rgba(255,200,100,.8)}
+.nudge-btn{width:100%;margin-top:5px;background:rgba(240,165,0,.15);border:1px solid rgba(240,165,0,.25);color:rgba(255,200,100,.85);font-size:11px;font-weight:700;padding:5px;border-radius:6px;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+
+/* ═══ MAIN ══════════════════════════════════ */
+.main{width:100%;padding:22px 32px 80px}
+.db-toggle-wrap{display:flex;justify-content:center;margin-bottom:16px}
+.db-toggle-btn{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:rgba(255,255,255,.7);font-size:12px;font-weight:700;padding:7px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.12);cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 2px 12px rgba(0,0,0,.2);transition:all .2s}
+.db-toggle-btn:hover{background:var(--navy3);color:#fff}
+
+/* HERO */
+.page-hero{background:var(--navy);border-radius:16px;padding:32px 44px;margin-bottom:22px;position:relative;overflow:hidden;border:1px solid rgba(240,165,0,.12)}
+.page-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(240,165,0,.12) 0%,transparent 70%)}
+.page-hero::after{content:'WRAP UP';font-family:'Bebas Neue',sans-serif;font-size:140px;position:absolute;right:-8px;bottom:-18px;color:rgba(255,255,255,.025);line-height:1;pointer-events:none}
+.ph-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(240,165,0,.15);border:1px solid rgba(240,165,0,.3);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:999px;margin-bottom:12px;text-transform:uppercase}
+.ph-badge::before{content:'●';font-size:6px;animation:blink 2s infinite}
+.ph-month-title{font-size:30px;font-weight:900;color:#fff;margin-bottom:8px}
+.ph-keymsg{display:inline-block;font-size:17px;font-weight:700;color:var(--gold2);background:rgba(240,165,0,.1);border-left:4px solid var(--gold);padding:10px 18px;border-radius:0 10px 10px 0}
+/* 5개월 journey bar */
+.journey-bar{display:flex;gap:0;margin-top:20px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.jb-item{flex:1;padding:14px 16px;text-align:center;transition:opacity .2s;cursor:default}
+.jb-num{font-size:12px;font-weight:700;letter-spacing:1px;opacity:.65;margin-bottom:5px;text-transform:uppercase}
+.jb-name{font-size:18px;font-weight:900;color:#fff;margin-bottom:6px}
+.jb-check{font-size:0;margin-top:0;display:flex;align-items:center;justify-content:center;gap:8px}
+.jb-check::before{content:'';width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);flex-shrink:0}
+.jb-check.done::before{content:'✓';font-size:14px;font-weight:800;background:var(--gold);border-color:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center}
+
+/* WEEK TABS */
+.week-nav{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.wn-btn{flex:1;min-width:160px;padding:13px 8px;background:var(--card);border:1.5px solid var(--border);border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;color:var(--muted);transition:all .2s;font-family:'Noto Sans KR',sans-serif;text-align:center}
+.wn-btn:hover{border-color:var(--gold2);color:var(--decdark)}
+.wn-btn.active{background:linear-gradient(135deg,#1E3554,#0F1E35);color:var(--gold2);border-color:rgba(240,165,0,.4);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.wn-sub{font-size:11px;font-weight:500;opacity:.75;display:block;margin-top:2px}
+.week-panel{display:none;animation:fadeUp .28s ease}
+.week-panel.active{display:block}
+.sec-label{font-size:15px;font-weight:800;letter-spacing:1.5px;color:var(--sub);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.card-intro{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:16px 22px;margin-bottom:18px;font-size:15px;color:var(--sub);line-height:1.8}
+.card-intro strong{color:var(--text)}
+
+/* ═══ SECTION 1 : 전체 대시보드 ════════════ */
+.final-dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.fd-card{background:var(--card);border-radius:14px;border:1px solid var(--border);padding:20px 22px;text-align:center;transition:box-shadow .2s}
+.fd-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.07)}
+.fd-icon{font-size:36px;margin-bottom:12px}
+.fd-val{font-size:40px;font-weight:900;line-height:1;margin-bottom:6px}
+.fd-label{font-size:15px;color:var(--sub);font-weight:700}
+.fd-sub{font-size:13px;color:var(--muted);margin-top:5px}
+
+/* month score cards */
+.month-scores{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
+.ms-card{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:14px 12px;text-align:center;overflow:hidden;position:relative}
+.ms-bar{height:4px;position:absolute;top:0;left:0;right:0;border-radius:4px 4px 0 0}
+.ms-month{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.ms-title{font-size:15px;font-weight:900;color:var(--text);margin-bottom:10px}
+.ms-score{font-size:32px;font-weight:900;line-height:1;margin-bottom:5px}
+.ms-rank{font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;display:inline-block}
+.ms-rate{font-size:13px;color:var(--sub);margin-top:6px;font-weight:600}
+
+/* ═══ SECTION 2 : 타임캡슐 개봉 ═══════════ */
+.capsule-reveal-section{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.capsule-big-card{background:var(--card);border-radius:16px;border:1px solid var(--border);overflow:hidden}
+.cbc-head{padding:22px 26px;position:relative;overflow:hidden}
+.cbc-head::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;opacity:.08}
+.cbc-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px}
+.cbc-title{font-size:20px;font-weight:900;margin-bottom:4px}
+.cbc-sub{font-size:13px;opacity:.7;line-height:1.6}
+.cbc-body{padding:20px 26px}
+.capsule-open-btn{width:100%;padding:16px;border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Noto Sans KR',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .22s;margin-bottom:14px}
+.capsule-open-btn:hover{filter:brightness(1.08);transform:scale(1.01)}
+.capsule-msgs{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto;scrollbar-width:thin}
+.cap-msg{border-radius:10px;padding:12px 14px;border-left:4px solid;font-size:13.5px;line-height:1.75;font-style:italic}
+.cap-msg-who{font-size:10px;font-weight:700;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase}
+.cap-count{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:700;margin-top:10px}
+.cap-locked{font-size:13px;font-style:italic;text-align:center;padding:30px 20px;opacity:.5}
+
+/* ═══ SECTION 3 : 전사 랭킹 & 시상 ═════════ */
+.ranking-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+/* podium */
+.podium-wrap{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.pw-head{padding:18px 24px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08)}
+.pw-title{font-size:20px;font-weight:900;color:#fff}
+.pw-sub{font-size:14px;color:rgba(255,255,255,.5);margin-top:4px}
+.podium-stage{display:flex;align-items:flex-end;justify-content:center;gap:8px;padding:24px 20px 16px;background:linear-gradient(180deg,#F8FAFB,#fff)}
+.podium-item{display:flex;flex-direction:column;align-items:center;gap:6px}
+.pod-block{display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;border-radius:8px 8px 0 0}
+.pod-rank{font-size:20px}
+.pod-team{font-size:15px;font-weight:900;color:var(--text);text-align:center}
+.pod-pts{font-size:14px;font-weight:700;color:var(--muted)}
+.pod-trophy{font-size:24px;text-align:center}
+/* team rank list */
+.team-rank-list{padding:14px 22px;display:flex;flex-direction:column;gap:6px;max-height:200px;overflow-y:auto}
+.trl-item{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg);border-radius:8px;font-size:13px;transition:all .15s}
+.trl-item:hover{background:#EFF6FF}
+.trl-rank{font-family:'Bebas Neue',sans-serif;font-size:22px;min-width:28px;text-align:center;color:var(--muted)}
+.trl-name{font-weight:800;font-size:15px;color:var(--text);flex:1}
+.trl-pts{font-size:15px;font-weight:800;color:var(--decdark)}
+.trl-bar{width:90px;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.trl-fill{height:100%;border-radius:4px}
+
+/* award cards */
+.awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.award-card{background:var(--card);border-radius:14px;border:1px solid var(--border);padding:18px;text-align:center;transition:all .2s;position:relative;overflow:hidden}
+.award-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-2px)}
+.award-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.award-icon{font-size:36px;margin-bottom:10px}
+.award-name{font-size:13px;font-weight:700;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.award-team{font-size:20px;font-weight:900;color:var(--text);margin-bottom:5px}
+.award-desc{font-size:13px;color:var(--sub);line-height:1.65}
+.award-badge{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;margin-top:10px}
+
+/* ═══ SECTION 4 : 5개월 활동 파노라마 ════════ */
+.panorama-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
+.pan-card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:all .2s}
+.pan-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.1);transform:translateY(-2px)}
+.pan-head{height:6px}
+.pan-body{padding:14px 14px 10px}
+.pan-month{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.pan-title{font-size:16px;font-weight:900;color:var(--text);margin-bottom:10px}
+.pan-stats{display:flex;flex-direction:column;gap:5px}
+.pan-stat{font-size:13px;color:var(--sub);display:flex;align-items:center;gap:5px;line-height:1.5}
+.pan-stat::before{content:'·';font-size:16px;font-weight:900;flex-shrink:0}
+/* panorama photo strip */
+.pan-photo-strip{overflow:hidden;border-radius:10px;margin-top:12px;position:relative;height:90px}
+.pan-photo-track{display:flex;gap:6px;animation:panoramaScroll 12s linear infinite;width:max-content}
+.pan-card:hover .pan-photo-track{animation-play-state:paused}
+.pan-photo-img{width:130px;height:90px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px}
+@keyframes panoramaScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══ SECTION 5 : 소감 댓글 ════════════════ */
+.feelings-section{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden;margin-bottom:18px}
+.fs-head{padding:18px 24px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08)}
+.fs-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
+.fs-sub{font-size:12px;color:rgba(255,255,255,.45)}
+.fs-body{padding:18px 24px}
+.feeling-list{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;max-height:320px;overflow-y:auto}
+.feeling-item{background:var(--bg);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--sub);line-height:1.75;border-left:3px solid}
+.fi-meta{font-size:11px;font-weight:700;margin-bottom:5px;letter-spacing:.3px;display:flex;align-items:center;gap:8px}
+.fi-month-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px}
+.fi-text{font-size:14px;color:var(--text);line-height:1.8}
+.fi-like{background:none;border:none;cursor:pointer;font-size:12px;color:var(--muted);padding:2px 7px;border-radius:5px;margin-top:6px;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.fi-like:hover,.fi-like.liked{color:#EF4444;background:rgba(239,68,68,.07)}
+.feeling-input-area{border-top:1px solid var(--border);padding-top:14px;margin-top:4px}
+.fi-prompt{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px}
+.fi-prompt span{color:var(--gold);font-size:16px}
+/* month tag row */
+.month-tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.mtag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--muted);font-family:'Noto Sans KR',sans-serif;transition:all .15s}
+.mtag.active{color:#fff}
+.fi-irow{display:flex;gap:8px;margin-top:8px}
+.fi-input{flex:1;border:1.5px solid var(--border);border-radius:9px;padding:11px 14px;font-size:14px;font-family:'Noto Sans KR',sans-serif;color:var(--text);outline:none;transition:border .2s}
+.fi-input:focus{border-color:var(--gold)}
+.fi-send{background:linear-gradient(135deg,#1E3554,#0F1E35);color:var(--gold2);border:none;border-radius:9px;padding:11px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+
+/* ═══ SECTION 6 : 우리팀 한 해 리뷰 ═════════ */
+.team-review-card{background:var(--navy);border-radius:16px;padding:28px 32px;margin-bottom:18px;border:1px solid rgba(240,165,0,.15);position:relative;overflow:hidden}
+.team-review-card::after{content:'2026';font-family:'Bebas Neue',sans-serif;font-size:150px;position:absolute;right:-10px;bottom:-20px;color:rgba(255,255,255,.03);line-height:1;pointer-events:none}
+.tr-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.tr-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px}
+.tr-desc{font-size:14px;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:22px;max-width:600px}
+.team-highlights{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:22px}
+.th-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 12px;text-align:center}
+.th-icon{font-size:24px;margin-bottom:8px}
+.th-val{font-size:20px;font-weight:900;color:var(--gold2);margin-bottom:3px;line-height:1}
+.th-label{font-size:10px;color:rgba(255,255,255,.45);font-weight:600;line-height:1.4}
+/* groundrule mosaic */
+.groundrule-mosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gr-tile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px;cursor:pointer;transition:all .18s}
+.gr-tile:hover{background:rgba(255,255,255,.1)}
+.gr-tile.open{grid-column:span 2;background:rgba(255,255,255,.09);min-height:200px}
+.gr-m-num{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;opacity:.6}
+.gr-m-name{font-size:12px;font-weight:800;color:#fff;margin-bottom:6px}
+.gr-rule-preview{font-size:11px;color:rgba(255,255,255,.45);line-height:1.5;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.gr-rule-full{font-size:12px;color:rgba(255,255,255,.7);line-height:1.75;display:none}
+.gr-tile.open .gr-rule-preview{display:none}
+.gr-tile.open .gr-rule-full{display:block}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes confettiFall{0%{transform:translateY(-10px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="db">
+  <div class="db-inner">
+  <div class="db-topbar">
+    <button class="db-back" onclick="history.back()">← 보고서</button>
+    <div style="display:flex;flex-direction:column">
+      <div class="db-brand-main">GROUND IN : <span>HIGH-5</span></div>
+      <div class="db-brand-sub">5대 조직문화 지향점 내재화 프로그램</div>
+    </div>
+  </div>
+  <div class="db-cells">
+    <div class="dbc" style="background:rgba(240,165,0,.06)">
+      <div class="dbc-lbl">나의 누적 포인트</div>
+      <div class="dbc-val gold-v" style="font-size:36px">4,820<span class="u">P</span></div>
+      <div class="dbc-sub" style="color:rgba(240,165,0,.65);font-weight:700">🎉 5개월 최종 포인트</div>
+      <div style="margin-top:5px;padding-top:5px;border-top:1px solid rgba(255,255,255,.06)">
+        <div class="dbc-lbl" style="font-size:10px">우리팀 전체 포인트</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;line-height:1">28,640<span style="font-size:11px;color:rgba(255,255,255,.4);font-weight:500">P</span></div>
+        <div class="dbc-sub" style="font-size:10px">5개월 누적 합산</div>
+      </div>
+    </div>
+    <div class="dbc">
+      <div class="dbc-lbl">나의 최종 랭킹</div>
+      <div class="dbc-val gold-v" style="font-size:30px">7<span class="u">위</span></div>
+      <div style="margin-top:5px;padding-top:5px;border-top:1px solid rgba(255,255,255,.06)">
+        <div class="dbc-lbl" style="font-size:10px">우리팀 최종 랭킹</div>
+        <div style="font-size:20px;font-weight:900;color:#fff;line-height:1">1<span style="font-size:11px;color:rgba(255,255,255,.4);font-weight:500">위</span></div>
+        <div class="dbc-sub" style="font-size:10px">전체 142팀 중 🏆</div>
+      </div>
+    </div>
+    <div class="dbc">
+      <div class="dbc-lbl">5개월 스트릭</div>
+      <div class="dbc-val" style="color:var(--gold2)">127<span class="u" style="color:rgba(255,255,255,.45)">일</span></div>
+      <div class="s-row">
+        <div class="sd on">월</div><div class="sd on">화</div><div class="sd on">수</div>
+        <div class="sd on">목</div><div class="sd on">금</div><div class="sd">토</div><div class="sd">일</div>
+      </div>
+      <div class="dbc-sub" style="margin-top:3px;font-size:10px">🔥 5개월 완주 달성!</div>
+    </div>
+    <div class="db-mis">
+      <div class="db-mis-lbl">오늘의 랩업 미션</div>
+      <div class="mi-list">
+        <div class="mi"><button class="mi-chk done" onclick="tMi(this)">✓</button><span class="mi-txt">타임캡슐 개봉하기</span><span class="mi-pts">+50P ✓</span></div>
+        <div class="mi"><button class="mi-chk done" onclick="tMi(this)">✓</button><span class="mi-txt">5개월 소감 남기기</span><span class="mi-pts">+30P ✓</span></div>
+        <div class="mi"><button class="mi-chk" onclick="tMi(this)"></button><span class="mi-txt">전사 최종 랭킹 확인</span><span class="mi-pts">+10P</span></div>
+        <div class="mi"><button class="mi-chk" onclick="tMi(this)"></button><span class="mi-txt">내년 다짐 한 줄 쓰기</span><span class="mi-pts">+20P</span></div>
+        <div class="mi"><button class="mi-chk" onclick="tMi(this)"></button><span class="mi-txt">동료에게 감사 메시지</span><span class="mi-pts">+20P</span></div>
+      </div>
+    </div>
+    <div class="dbc-prog">
+      <div class="dbc-lbl">전사 참여율</div>
+      <div class="dbc-val" style="color:#fff">94<span class="u">%</span></div>
+      <div class="db-pbar"><div class="db-pfill" style="width:94%"></div></div>
+      <div class="dbc-sub">133 / 142팀 완주 · 5개월</div>
+      <button class="db-pbtn" onclick="tProg(this)">📊 실/본부 상세 ▾</button>
+      <div class="prog-inline" id="progInline">
+        <div class="pil-title">실 · 본부 단위 완주율</div>
+        <div class="pil-row"><span class="pil-lbl">전략사업본부</span><div class="pil-bw"><div class="pil-bf" style="width:96%;background:#10B981"></div></div><span class="pil-pct">96%</span></div>
+        <div class="pil-row"><span class="pil-lbl">기획운영실</span><div class="pil-bw"><div class="pil-bf" style="width:95%;background:#10B981"></div></div><span class="pil-pct">95%</span></div>
+        <div class="pil-row"><span class="pil-lbl">개발본부</span><div class="pil-bw"><div class="pil-bf" style="width:98%;background:var(--gold)"></div></div><span class="pil-pct">98%</span></div>
+        <div class="pil-row"><span class="pil-lbl">마케팅실</span><div class="pil-bw"><div class="pil-bf" style="width:90%;background:#10B981"></div></div><span class="pil-pct">90%</span></div>
+        <div class="pil-row"><span class="pil-lbl">영업본부</span><div class="pil-bw"><div class="pil-bf" style="width:88%;background:#10B981"></div></div><span class="pil-pct">88%</span></div>
+      </div>
+    </div>
+    <div class="db-leader">
+      <div class="db-leader-lbl">🎊 우리팀 완주 현황</div>
+      <div class="lm-row"><div class="lm-av">김</div>김민준<span class="lm-st lm-done">완주</span></div>
+      <div class="lm-row"><div class="lm-av">이</div>이서연<span class="lm-st lm-done">완주</span></div>
+      <div class="lm-row"><div class="lm-av">박</div>박도현<span class="lm-st lm-done">완주</span></div>
+      <div class="lm-row"><div class="lm-av">최</div>최지우<span class="lm-st lm-done">완주</span></div>
+      <button class="nudge-btn" style="background:rgba(240,165,0,.2);border-color:rgba(240,165,0,.3);color:var(--gold2)">🎉 전원 완주 축하!</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="db-toggle-wrap">
+    <button class="db-toggle-btn" id="dbToggleBtn" onclick="toggleDB()">▲ 대시보드 숨기기</button>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="ph-badge">12월 · 랩업 &amp; 시상식</div>
+    <div class="ph-month-title">🎊 GROUND IN : HIGH-5 랩업</div>
+    <div class="ph-keymsg">"5개월간의 여정, 함께 완성했습니다"</div>
+    <!-- journey bar -->
+    <div class="journey-bar" style="margin-top:20px">
+      <div class="jb-item" style="background:rgba(59,130,246,.25)"><div class="jb-num">Month 1</div><div class="jb-name">소통과 인정</div><div class="jb-check done"></div></div>
+      <div class="jb-item" style="background:rgba(139,92,246,.25)"><div class="jb-num">Month 2</div><div class="jb-name">존중과 배려</div><div class="jb-check done"></div></div>
+      <div class="jb-item" style="background:rgba(245,158,11,.25)"><div class="jb-num">Month 3</div><div class="jb-name">칭찬과 격려</div><div class="jb-check done"></div></div>
+      <div class="jb-item" style="background:rgba(16,185,129,.25)"><div class="jb-num">Month 4</div><div class="jb-name">성장과 육성</div><div class="jb-check done"></div></div>
+      <div class="jb-item" style="background:rgba(239,68,68,.25)"><div class="jb-num">Month 5</div><div class="jb-name">협업과 시너지</div><div class="jb-check done"></div></div>
+    </div>
+  </div>
+
+  <!-- WEEK TABS -->
+  <div class="week-nav">
+    <button class="wn-btn active" onclick="showWeek(1,this)">🏆 전체 대시보드<span class="wn-sub">5개월 총결산</span></button>
+    <button class="wn-btn" onclick="showWeek(2,this)">⏳ 타임캡슐 개봉<span class="wn-sub">칭찬 · 성장 오픈</span></button>
+    <button class="wn-btn" onclick="showWeek(3,this)">🥇 전사 랭킹 &amp; 시상<span class="wn-sub">팀 · 개인 시상</span></button>
+    <button class="wn-btn" onclick="showWeek(4,this)">📸 파노라마 &amp; 소감<span class="wn-sub">5개월 사진 &amp; 댓글</span></button>
+    <button class="wn-btn" onclick="showWeek(5,this)">🌱 내년 다짐<span class="wn-sub">팀 그라운드룰 총정리</span></button>
+  </div>
+
+  <!-- ══ SECTION 1 : 전체 대시보드 ═══════════════════════ -->
+  <div class="week-panel active" id="week1">
+    <div class="card-intro"><strong>5개월 총결산 대시보드</strong><br>2026년 7월부터 11월까지 5개월간의 GROUND IN : HIGH-5 프로그램 전체 결과를 확인하세요.</div>
+
+    <!-- 핵심 지표 4개 -->
+    <div class="final-dash-grid">
+      <div class="fd-card">
+        <div class="fd-icon">🏢</div>
+        <div class="fd-val" style="color:var(--m4)">94%</div>
+        <div class="fd-label">전사 평균 완주율</div>
+        <div class="fd-sub">133 / 142팀 완주</div>
+      </div>
+      <div class="fd-card">
+        <div class="fd-icon">💬</div>
+        <div class="fd-val" style="color:var(--m1)">42,860</div>
+        <div class="fd-label">총 메시지 수</div>
+        <div class="fd-sub">5개월 전체 누적</div>
+      </div>
+      <div class="fd-card">
+        <div class="fd-icon">🔥</div>
+        <div class="fd-val" style="color:var(--m3)">127일</div>
+        <div class="fd-label">최장 스트릭 달성</div>
+        <div class="fd-sub">5개월 개근 팀원</div>
+      </div>
+      <div class="fd-card">
+        <div class="fd-icon">🤝</div>
+        <div class="fd-val" style="color:var(--m5)">186쌍</div>
+        <div class="fd-label">협업 플러팅 매칭</div>
+        <div class="fd-sub">Month 5 성사 건수</div>
+      </div>
+    </div>
+
+    <!-- 월별 점수 -->
+    <div class="sec-label">월별 우리팀 점수</div>
+    <div class="month-scores">
+      <div class="ms-card"><div class="ms-bar" style="background:var(--m1)"></div><div class="ms-month">Month 1</div><div class="ms-title">소통과 인정</div><div class="ms-score" style="color:var(--m1)">4,820</div><div class="ms-rank" style="background:#EFF6FF;color:#1D4ED8">팀 1위</div><div class="ms-rate">완주율 96%</div></div>
+      <div class="ms-card"><div class="ms-bar" style="background:var(--m2)"></div><div class="ms-month">Month 2</div><div class="ms-title">존중과 배려</div><div class="ms-score" style="color:var(--m2)">5,140</div><div class="ms-rank" style="background:#F5F3FF;color:#6D28D9">팀 2위</div><div class="ms-rate">완주율 93%</div></div>
+      <div class="ms-card"><div class="ms-bar" style="background:var(--m3)"></div><div class="ms-month">Month 3</div><div class="ms-title">칭찬과 격려</div><div class="ms-score" style="color:var(--m3)">6,380</div><div class="ms-rank" style="background:#FFFBEB;color:#B45309">팀 1위</div><div class="ms-rate">완주율 98%</div></div>
+      <div class="ms-card"><div class="ms-bar" style="background:var(--m4)"></div><div class="ms-month">Month 4</div><div class="ms-title">성장과 육성</div><div class="ms-score" style="color:var(--m4)">5,680</div><div class="ms-rank" style="background:#ECFDF5;color:#047857">팀 1위</div><div class="ms-rate">완주율 100%</div></div>
+      <div class="ms-card"><div class="ms-bar" style="background:var(--m5)"></div><div class="ms-month">Month 5</div><div class="ms-title">협업과 시너지</div><div class="ms-score" style="color:var(--m5)">6,620</div><div class="ms-rank" style="background:#FEF2F2;color:#B91C1C">팀 1위</div><div class="ms-rate">완주율 100%</div></div>
+    </div>
+
+    <!-- 누적 포인트 + 1인평균/완주율 가로 배열 -->
+    <div style="background:linear-gradient(135deg,var(--navy),var(--navy3));border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:24px;border:1px solid rgba(240,165,0,.15);flex-wrap:wrap;margin-top:0">
+      <div style="flex:2;min-width:200px">
+        <div style="font-size:14px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:8px">5개월 최종 누적 포인트</div>
+        <div style="font-family:&#39;Bebas Neue&#39;,sans-serif;font-size:60px;color:var(--gold2);letter-spacing:-1px;line-height:1">28,640<span style="font-size:26px;color:rgba(255,255,255,.4);margin-left:4px">P</span></div>
+        <div style="font-size:15px;color:rgba(255,255,255,.55);margin-top:8px">개발1팀 · 전체 1위 🏆</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-shrink:0">
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px 22px;text-align:center;min-width:120px">
+          <div style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:5px;font-weight:600">1인 평균</div>
+          <div style="font-size:26px;font-weight:900;color:#fff">2,045<span style="font-size:14px;color:rgba(255,255,255,.4)">P</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px 22px;text-align:center;min-width:120px">
+          <div style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:5px;font-weight:600">팀 완주율</div>
+          <div style="font-size:26px;font-weight:900;color:var(--gold2)">100%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 영역별 포인트 -->
+    <div style="margin-top:18px">
+      <div class="sec-label">영역별 누적 포인트</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px">
+        <div style="background:var(--card);border-radius:12px;border:1.5px solid #BFDBFE;padding:16px 14px;text-align:center">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--m1);text-transform:uppercase;margin-bottom:5px">Month 1</div>
+          <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px">소통과 인정</div>
+          <div style="font-size:28px;font-weight:900;color:var(--m1);line-height:1">4,820<span style="font-size:13px;color:var(--muted)">P</span></div>
+          <div style="height:5px;background:#EFF6FF;border-radius:3px;margin-top:8px;overflow:hidden"><div style="width:73%;height:100%;background:var(--m1);border-radius:3px"></div></div>
+        </div>
+        <div style="background:var(--card);border-radius:12px;border:1.5px solid #DDD6FE;padding:16px 14px;text-align:center">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--m2);text-transform:uppercase;margin-bottom:5px">Month 2</div>
+          <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px">존중과 배려</div>
+          <div style="font-size:28px;font-weight:900;color:var(--m2);line-height:1">5,140<span style="font-size:13px;color:var(--muted)">P</span></div>
+          <div style="height:5px;background:#F5F3FF;border-radius:3px;margin-top:8px;overflow:hidden"><div style="width:78%;height:100%;background:var(--m2);border-radius:3px"></div></div>
+        </div>
+        <div style="background:var(--card);border-radius:12px;border:1.5px solid #FDE68A;padding:16px 14px;text-align:center">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--m3);text-transform:uppercase;margin-bottom:5px">Month 3</div>
+          <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px">칭찬과 격려</div>
+          <div style="font-size:28px;font-weight:900;color:var(--m3);line-height:1">6,380<span style="font-size:13px;color:var(--muted)">P</span></div>
+          <div style="height:5px;background:#FFFBEB;border-radius:3px;margin-top:8px;overflow:hidden"><div style="width:97%;height:100%;background:var(--m3);border-radius:3px"></div></div>
+        </div>
+        <div style="background:var(--card);border-radius:12px;border:1.5px solid #A7F3D0;padding:16px 14px;text-align:center">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--m4);text-transform:uppercase;margin-bottom:5px">Month 4</div>
+          <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px">성장과 육성</div>
+          <div style="font-size:28px;font-weight:900;color:var(--m4);line-height:1">5,680<span style="font-size:13px;color:var(--muted)">P</span></div>
+          <div style="height:5px;background:#ECFDF5;border-radius:3px;margin-top:8px;overflow:hidden"><div style="width:86%;height:100%;background:var(--m4);border-radius:3px"></div></div>
+        </div>
+        <div style="background:var(--card);border-radius:12px;border:1.5px solid #FECACA;padding:16px 14px;text-align:center">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--m5);text-transform:uppercase;margin-bottom:5px">Month 5</div>
+          <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px">협업과 시너지</div>
+          <div style="font-size:28px;font-weight:900;color:var(--m5);line-height:1">6,620<span style="font-size:13px;color:var(--muted)">P</span></div>
+          <div style="height:5px;background:#FEF2F2;border-radius:3px;margin-top:8px;overflow:hidden"><div style="width:100%;height:100%;background:var(--m5);border-radius:3px"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 2 : 타임캡슐 개봉 ══════════════════════ -->
+  <div class="week-panel" id="week2">
+    <div class="card-intro"><strong>🎊 타임캡슐 개봉</strong><br>Month 3 <strong>칭찬 타임캡슐</strong>과 Month 4 <strong>성장 타임캡슐</strong>이 오늘 드디어 개봉됩니다. 5개월 전 팀원들이 남긴 진심 어린 메시지를 함께 읽어봐요.</div>
+
+    <div class="capsule-reveal-section">
+      <!-- 칭찬 타임캡슐 -->
+      <div class="capsule-big-card">
+        <div class="cbc-head" style="background:linear-gradient(135deg,#1E1200,#2D1F00);color:#fff">
+          <div class="cbc-head::before" style="background:var(--m3)"></div>
+          <div class="cbc-label" style="color:var(--m3);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">Month 3 · 칭찬 타임캡슐</div>
+          <div class="cbc-title" style="color:#fff">💌 칭찬 타임캡슐 개봉</div>
+          <div class="cbc-sub" style="color:rgba(255,255,255,.55);font-size:13px">9월에 봉인된 팀원들의 칭찬 메시지가 공개됩니다</div>
+        </div>
+        <div class="cbc-body">
+          <button class="capsule-open-btn" id="praiseCapsuleBtn" style="background:linear-gradient(135deg,var(--m3),#D97706);color:#fff" onclick="openCapsule(&#39;praise&#39;)">
+            <span style="font-size:22px">🥚</span> 칭찬 타임캡슐 개봉하기
+          </button>
+          <div class="cap-count" id="praiseCount" style="background:#FFFBEB;border:1px solid #FDE68A;color:var(--m3d,#B45309)">💌 칭찬 메시지 <strong>10개</strong> 봉인 완료</div>
+          <div class="capsule-msgs" id="praiseMsgs" style="display:none;margin-top:14px">
+            <div class="cap-msg" style="background:#FFFBEB;border-left-color:var(--m3)"><div class="cap-msg-who" style="color:var(--m3)">→ 이서연님에게</div>"어떤 상황에서도 긍정적인 에너지를 잃지 않는 모습이 팀 전체에 큰 힘이 됩니다. 덕분에 저도 힘든 날 다시 일어날 수 있었어요."</div>
+            <div class="cap-msg" style="background:#FFFBEB;border-left-color:var(--m3)"><div class="cap-msg-who" style="color:var(--m3)">→ 박도현님에게</div>"막히는 문제가 있을 때 포기하지 않고 끝까지 파고드는 모습을 보면 저도 모르게 자극받게 됩니다. 당신의 끈기가 팀의 완성도를 높입니다."</div>
+            <div class="cap-msg" style="background:#FFFBEB;border-left-color:var(--m3)"><div class="cap-msg-who" style="color:var(--m3)">→ 최지우님에게</div>"꼼꼼하게 리뷰해주는 덕분에 우리 팀 결과물의 퀄리티가 항상 높습니다. 눈에 잘 띄지 않는 기여지만 팀 전체가 다 알고 있어요."</div>
+            <div class="cap-msg" style="background:#FFFBEB;border-left-color:var(--m3)"><div class="cap-msg-who" style="color:var(--m3)">→ 박재원 팀장님에게</div>"결과보다 과정을 봐주시고 실수할 때도 가능성을 이야기해 주셔서 감사합니다. 그 덕분에 우리가 두려움 없이 도전할 수 있습니다."</div>
+            <div class="cap-msg" style="background:#FFFBEB;border-left-color:var(--m3)"><div class="cap-msg-who" style="color:var(--m3)">→ 한수진님에게</div>"회의 분위기가 무거울 때 항상 먼저 웃음을 만들어주세요. 그 한 마디가 팀 전체를 다시 숨 쉬게 합니다."</div>
+            <div class="cap-msg" style="background:#FFFBEB;border-left-color:var(--m3)"><div class="cap-msg-who" style="color:var(--m3)">→ 정우성님에게</div>"조용하지만 항상 준비되어 있는 분입니다. 필요한 순간 정확하게 필요한 것을 해주는 믿음직스러운 존재입니다."</div>
+            <div style="text-align:center;font-size:13px;color:var(--muted);padding:10px;font-style:italic">+ 4개 메시지 추가 공개 · 모두 수고하셨습니다 🌟</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 성장 타임캡슐 -->
+      <div class="capsule-big-card">
+        <div class="cbc-head" style="background:linear-gradient(135deg,#0A2018,#0F2E22);color:#fff">
+          <div class="cbc-label" style="color:var(--m4);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">Month 4 · 성장 타임캡슐</div>
+          <div class="cbc-title" style="color:#fff">🌱 성장 타임캡슐 개봉</div>
+          <div class="cbc-sub" style="color:rgba(255,255,255,.55);font-size:13px">10월에 봉인된 팀원들의 성장 목표가 공개됩니다</div>
+        </div>
+        <div class="cbc-body">
+          <button class="capsule-open-btn" id="growthCapsuleBtn" style="background:linear-gradient(135deg,var(--m4),#047857);color:#fff" onclick="openCapsule(&#39;growth&#39;)">
+            <span style="font-size:22px">🌱</span> 성장 타임캡슐 개봉하기
+          </button>
+          <div class="cap-count" id="growthCount" style="background:#ECFDF5;border:1px solid #6EE7B7;color:#047857">🌱 성장 목표 <strong>14개</strong> 봉인 완료</div>
+          <div class="capsule-msgs" id="growthMsgs" style="display:none;margin-top:14px">
+            <div class="cap-msg" style="background:#ECFDF5;border-left-color:var(--m4)"><div class="cap-msg-who" style="color:#047857">익명 목표 #1</div>"올해는 Python 데이터 분석 자격증을 취득하고, 업무에 실제로 적용하는 것이 목표입니다."</div>
+            <div class="cap-msg" style="background:#ECFDF5;border-left-color:var(--m4)"><div class="cap-msg-who" style="color:#047857">익명 목표 #3</div>"퇴근 후 30분이라도 영어 공부. 글로벌 프로젝트에 기여할 수 있는 수준이 되고 싶습니다."</div>
+            <div class="cap-msg" style="background:#ECFDF5;border-left-color:var(--m4)"><div class="cap-msg-who" style="color:#047857">익명 목표 #5</div>"올해 읽을 책 12권. 한 달에 한 권, 읽은 책 요약을 팀원과 공유하겠습니다."</div>
+            <div class="cap-msg" style="background:#ECFDF5;border-left-color:var(--m4)"><div class="cap-msg-who" style="color:#047857">익명 목표 #9</div>"올해는 '아니오'를 잘 말하는 것이 목표입니다. 선택과 집중을 통한 성장을 배우겠습니다."</div>
+            <div class="cap-msg" style="background:#ECFDF5;border-left-color:var(--m4)"><div class="cap-msg-who" style="color:#047857">익명 목표 #2</div>"주니어 동료 1명의 멘토가 되어보고 싶습니다. 가르치면서 제가 더 많이 배울 것 같아요."</div>
+            <div style="text-align:center;font-size:13px;color:var(--muted);padding:10px;font-style:italic">+ 9개 목표 추가 공개 · 달성률 79% 🌱</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 3 : 전사 랭킹 & 시상 ═══════════════════ -->
+  <div class="week-panel" id="week3">
+    <div class="card-intro"><strong>🥇 전사 최종 랭킹 &amp; 시상식</strong><br>5개월간의 점수를 합산한 전사 최종 랭킹이 발표됩니다. 각 카테고리별 우수팀에게 시상합니다.</div>
+
+    <!-- 시상 카드 -->
+    <div class="sec-label">카테고리별 시상</div>
+    <div class="awards-grid">
+      <div class="award-card" style="--ac:#F59E0B"><div class="award-card::before" style="background:var(--m3)"></div><div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--m3);border-radius:14px 14px 0 0"></div><div class="award-icon">🏆</div><div class="award-name">종합 우수팀</div><div class="award-team">개발1팀</div><div class="award-desc">5개월 누적 28,640P · 5개월 연속 1위</div><div class="award-badge" style="background:#FFFBEB;color:#B45309">🥇 종합 1위</div></div>
+      <div class="award-card"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--m1);border-radius:14px 14px 0 0"></div><div class="award-icon">💬</div><div class="award-name">소통 활성화상</div><div class="award-team">마케팅팀</div><div class="award-desc">월평균 메시지 수 전사 1위 · 릴레이 참여율 100%</div><div class="award-badge" style="background:#EFF6FF;color:#1D4ED8">🏅 소통왕</div></div>
+      <div class="award-card"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--m2);border-radius:14px 14px 0 0"></div><div class="award-icon">🤝</div><div class="award-name">존중 문화상</div><div class="award-team">기획1팀</div><div class="award-desc">Month 2 존중·배려 지수 전사 최고점 4.6점 달성</div><div class="award-badge" style="background:#F5F3FF;color:#6D28D9">🏅 존중왕</div></div>
+      <div class="award-card"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--m3);border-radius:14px 14px 0 0"></div><div class="award-icon">🌟</div><div class="award-name">칭찬 챔피언상</div><div class="award-team">UX팀</div><div class="award-desc">Month 3 칭찬 릴레이 최다 공감 수 달성 · 좋아요 486개</div><div class="award-badge" style="background:#FFFBEB;color:#B45309">🏅 칭찬왕</div></div>
+      <div class="award-card"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--m4);border-radius:14px 14px 0 0"></div><div class="award-icon">🌱</div><div class="award-name">성장 열정상</div><div class="award-team">영업2팀</div><div class="award-desc">Month 4 성장 목표 달성률 전사 1위 · 전원 목표 달성</div><div class="award-badge" style="background:#ECFDF5;color:#047857">🏅 성장왕</div></div>
+      <div class="award-card"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--m5);border-radius:14px 14px 0 0"></div><div class="award-icon">💘</div><div class="award-name">협업 시너지상</div><div class="award-team">데이터팀</div><div class="award-desc">Month 5 가장 많이 플러팅 받은 팀 · 매칭 성공 5건</div><div class="award-badge" style="background:#FEF2F2;color:#B91C1C">🏅 협업왕</div></div>
+    </div>
+
+    <!-- 전사 랭킹 TOP 10 -->
+    <div class="ranking-layout">
+      <div class="podium-wrap">
+        <div class="pw-head"><div class="pw-title">🏆 전사 팀 랭킹 TOP 3</div><div class="pw-sub">5개월 누적 포인트 기준</div></div>
+        <div class="podium-stage">
+          <!-- 2위 -->
+          <div class="podium-item">
+            <div class="pod-trophy">🥈</div>
+            <div class="pod-block" style="width:90px;height:80px;background:linear-gradient(180deg,#9CA3AF,#6B7280)"><div class="pod-rank">2</div></div>
+            <div class="pod-team">마케팅팀</div><div class="pod-pts">26,480P</div>
+          </div>
+          <!-- 1위 -->
+          <div class="podium-item">
+            <div class="pod-trophy">🥇</div>
+            <div class="pod-block" style="width:100px;height:110px;background:linear-gradient(180deg,var(--gold),#D97706)"><div class="pod-rank">1</div></div>
+            <div class="pod-team" style="font-weight:900;color:var(--gold)">개발1팀</div><div class="pod-pts" style="font-weight:700;color:var(--m3)">28,640P</div>
+          </div>
+          <!-- 3위 -->
+          <div class="podium-item">
+            <div class="pod-trophy">🥉</div>
+            <div class="pod-block" style="width:85px;height:65px;background:linear-gradient(180deg,#CD7F32,#A0522D)"><div class="pod-rank">3</div></div>
+            <div class="pod-team">UX팀</div><div class="pod-pts">25,120P</div>
+          </div>
+        </div>
+        <div class="team-rank-list">
+          <div class="trl-item"><div class="trl-rank" style="color:var(--gold)">1</div><div class="trl-name">개발1팀</div><div class="trl-pts">28,640P</div><div class="trl-bar"><div class="trl-fill" style="width:100%;background:var(--gold)"></div></div></div>
+          <div class="trl-item"><div class="trl-rank" style="color:#9CA3AF">2</div><div class="trl-name">마케팅팀</div><div class="trl-pts">26,480P</div><div class="trl-bar"><div class="trl-fill" style="width:92%;background:var(--m1)"></div></div></div>
+          <div class="trl-item"><div class="trl-rank" style="color:#CD7F32">3</div><div class="trl-name">UX팀</div><div class="trl-pts">25,120P</div><div class="trl-bar"><div class="trl-fill" style="width:87%;background:var(--m2)"></div></div></div>
+          <div class="trl-item"><div class="trl-rank">4</div><div class="trl-name">기획1팀</div><div class="trl-pts">24,860P</div><div class="trl-bar"><div class="trl-fill" style="width:86%;background:var(--m3)"></div></div></div>
+          <div class="trl-item"><div class="trl-rank">5</div><div class="trl-name">영업2팀</div><div class="trl-pts">23,540P</div><div class="trl-bar"><div class="trl-fill" style="width:82%;background:var(--m4)"></div></div></div>
+          <div class="trl-item"><div class="trl-rank">6</div><div class="trl-name">데이터팀</div><div class="trl-pts">22,760P</div><div class="trl-bar"><div class="trl-fill" style="width:79%;background:var(--m5)"></div></div></div>
+          <div class="trl-item"><div class="trl-rank">7</div><div class="trl-name">전략팀</div><div class="trl-pts">22,140P</div><div class="trl-bar"><div class="trl-fill" style="width:77%;background:var(--dec)"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 개인 랭킹 TOP 5 -->
+      <div class="podium-wrap">
+        <div class="pw-head"><div class="pw-title">🌟 개인 포인트 TOP 5</div><div class="pw-sub">5개월 개인 누적 포인트 기준</div></div>
+        <div style="padding:18px 22px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-radius:12px;border:1.5px solid var(--gold2)">
+            <div style="font-family:&#39;Bebas Neue&#39;,sans-serif;font-size:28px;color:var(--gold)">1</div>
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--m4),#059669);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff">김</div>
+            <div style="flex:1"><div style="font-size:15px;font-weight:900;color:var(--text)">김민준</div><div style="font-size:11px;color:var(--muted)">개발1팀 · 연속 127일</div></div>
+            <div style="font-size:16px;font-weight:900;color:var(--m3)">4,820P</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border-radius:10px;border:1px solid var(--border)">
+            <div style="font-family:&#39;Bebas Neue&#39;,sans-serif;font-size:24px;color:#9CA3AF">2</div>
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--m5),#B91C1C);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff">이</div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--text)">이서연</div><div style="font-size:11px;color:var(--muted)">마케팅팀</div></div>
+            <div style="font-size:14px;font-weight:700;color:var(--decdark)">4,640P</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border-radius:10px;border:1px solid var(--border)">
+            <div style="font-family:&#39;Bebas Neue&#39;,sans-serif;font-size:24px;color:#CD7F32">3</div>
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--m1),#1D4ED8);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff">박</div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--text)">박도현</div><div style="font-size:11px;color:var(--muted)">UX팀</div></div>
+            <div style="font-size:14px;font-weight:700;color:var(--decdark)">4,480P</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border-radius:10px;border:1px solid var(--border)">
+            <div style="font-family:&#39;Bebas Neue&#39;,sans-serif;font-size:22px;color:var(--muted)">4</div>
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--m2),#6D28D9);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff">최</div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--text)">최지우</div><div style="font-size:11px;color:var(--muted)">개발1팀</div></div>
+            <div style="font-size:14px;font-weight:700;color:var(--decdark)">4,320P</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border-radius:10px;border:1px solid var(--border)">
+            <div style="font-family:&#39;Bebas Neue&#39;,sans-serif;font-size:22px;color:var(--muted)">5</div>
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--m3),#D97706);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff">한</div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--text)">한수진</div><div style="font-size:11px;color:var(--muted)">기획1팀</div></div>
+            <div style="font-size:14px;font-weight:700;color:var(--decdark)">4,180P</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 4 : 파노라마 & 소감 ════════════════════ -->
+  <div class="week-panel" id="week4">
+    <div class="card-intro"><strong>📸 5개월 활동 파노라마 &amp; 소감</strong><br>Month 1부터 Month 5까지의 활동을 돌아보고, 5개월간의 여정에 대한 소감을 남겨주세요.</div>
+
+    <!-- 파노라마 -->
+    <div class="sec-label">5개월 활동 하이라이트</div>
+    <div class="panorama-grid">
+      <div class="pan-card"><div class="pan-head" style="background:var(--m1)"></div><div class="pan-body"><div class="pan-month" style="color:var(--m1)">Month 1 · 7월</div><div class="pan-title">소통과 인정</div><div class="pan-stats"><div class="pan-stat">밸런스 선택 14명 참여</div><div class="pan-stat">릴레이 팁 132개 작성</div><div class="pan-stat">인정 스티커 486개 증정</div></div><div class="pan-photo-strip"><div class="pan-photo-track"><div class="pan-photo-img" style="background:linear-gradient(135deg,#3B82F618,#3B82F608);border:1px solid #3B82F630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#3B82F618,#3B82F608);border:1px solid #3B82F630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#3B82F618,#3B82F608);border:1px solid #3B82F630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#3B82F618,#3B82F608);border:1px solid #3B82F630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#3B82F618,#3B82F608);border:1px solid #3B82F630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#3B82F618,#3B82F608);border:1px solid #3B82F630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#3B82F618,#3B82F608);border:1px solid #3B82F630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#3B82F618,#3B82F608);border:1px solid #3B82F630"></div></div></div></div></div>
+      <div class="pan-card"><div class="pan-head" style="background:var(--m2)"></div><div class="pan-body"><div class="pan-month" style="color:var(--m2)">Month 2 · 8월</div><div class="pan-title">존중과 배려</div><div class="pan-stats"><div class="pan-stat">지수 평균 3.8점 달성</div><div class="pan-stat">감사 편지 56통 발송</div><div class="pan-stat">존중 유형 14가지 완성</div></div><div class="pan-photo-strip"><div class="pan-photo-track"><div class="pan-photo-img" style="background:linear-gradient(135deg,#8B5CF618,#8B5CF608);border:1px solid #8B5CF630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#8B5CF618,#8B5CF608);border:1px solid #8B5CF630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#8B5CF618,#8B5CF608);border:1px solid #8B5CF630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#8B5CF618,#8B5CF608);border:1px solid #8B5CF630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#8B5CF618,#8B5CF608);border:1px solid #8B5CF630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#8B5CF618,#8B5CF608);border:1px solid #8B5CF630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#8B5CF618,#8B5CF608);border:1px solid #8B5CF630"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#8B5CF618,#8B5CF608);border:1px solid #8B5CF630"></div></div></div></div></div>
+      <div class="pan-card"><div class="pan-head" style="background:var(--m3)"></div><div class="pan-body"><div class="pan-month" style="color:var(--m3)">Month 3 · 9월</div><div class="pan-title">칭찬과 격려</div><div class="pan-stats"><div class="pan-stat">칭찬 릴레이 14연쇄 완성</div><div class="pan-stat">숨은 기여자 투표 48표</div><div class="pan-stat">타임캡슐 10개 봉인</div></div><div class="pan-photo-strip"><div class="pan-photo-track"><div class="pan-photo-img" style="background:linear-gradient(135deg,#F59E0B18,#F59E0B08);border:1px solid #F59E0B30"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#F59E0B18,#F59E0B08);border:1px solid #F59E0B30"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#F59E0B18,#F59E0B08);border:1px solid #F59E0B30"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#F59E0B18,#F59E0B08);border:1px solid #F59E0B30"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#F59E0B18,#F59E0B08);border:1px solid #F59E0B30"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#F59E0B18,#F59E0B08);border:1px solid #F59E0B30"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#F59E0B18,#F59E0B08);border:1px solid #F59E0B30"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#F59E0B18,#F59E0B08);border:1px solid #F59E0B30"></div></div></div></div></div>
+      <div class="pan-card"><div class="pan-head" style="background:var(--m4)"></div><div class="pan-body"><div class="pan-month" style="color:var(--m4)">Month 4 · 10월</div><div class="pan-title">성장과 육성</div><div class="pan-stats"><div class="pan-stat">성장 목표 14개 선언</div><div class="pan-stat">지식 세미나 3회 진행</div><div class="pan-stat">평균 달성률 79%</div></div><div class="pan-photo-strip"><div class="pan-photo-track"><div class="pan-photo-img" style="background:linear-gradient(135deg,#10B98118,#10B98108);border:1px solid #10B98130"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#10B98118,#10B98108);border:1px solid #10B98130"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#10B98118,#10B98108);border:1px solid #10B98130"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#10B98118,#10B98108);border:1px solid #10B98130"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#10B98118,#10B98108);border:1px solid #10B98130"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#10B98118,#10B98108);border:1px solid #10B98130"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#10B98118,#10B98108);border:1px solid #10B98130"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#10B98118,#10B98108);border:1px solid #10B98130"></div></div></div></div></div>
+      <div class="pan-card"><div class="pan-head" style="background:var(--m5)"></div><div class="pan-body"><div class="pan-month" style="color:var(--m5)">Month 5 · 11월</div><div class="pan-title">협업과 시너지</div><div class="pan-stats"><div class="pan-stat">위기 스토리 7인 완성</div><div class="pan-stat">협업 플러팅 2팀 매칭</div><div class="pan-stat">런치 미팅 4회 진행</div></div><div class="pan-photo-strip"><div class="pan-photo-track"><div class="pan-photo-img" style="background:linear-gradient(135deg,#EF444418,#EF444408);border:1px solid #EF444430"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#EF444418,#EF444408);border:1px solid #EF444430"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#EF444418,#EF444408);border:1px solid #EF444430"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#EF444418,#EF444408);border:1px solid #EF444430"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#EF444418,#EF444408);border:1px solid #EF444430"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#EF444418,#EF444408);border:1px solid #EF444430"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#EF444418,#EF444408);border:1px solid #EF444430"></div><div class="pan-photo-img" style="background:linear-gradient(135deg,#EF444418,#EF444408);border:1px solid #EF444430"></div></div></div></div></div>
+    </div>
+
+    <!-- 소감 댓글 -->
+    <div class="feelings-section">
+      <div class="fs-head">
+        <div class="fs-title">💬 5개월 소감 남기기</div>
+        <div class="fs-sub">어떤 월이 가장 기억에 남나요? 솔직한 소감을 남겨주세요 (익명)</div>
+      </div>
+      <div class="fs-body">
+        <div class="feeling-list" id="feelingList">
+          <div class="feeling-item" style="border-left-color:var(--m3)">
+            <div class="fi-meta"><span class="fi-month-tag" style="background:#FFFBEB;color:#B45309">Month 3 칭찬</span></div>
+            <div class="fi-text">칭찬 릴레이가 가장 기억에 남아요. 처음엔 어색했는데 마지막엔 진심이 담긴 말을 주고받을 수 있었어요. 그 메시지를 오늘 다시 읽으니 눈물이 나네요.</div>
+            <button class="fi-like" onclick="tLike(this)">❤️ 14</button>
+          </div>
+          <div class="feeling-item" style="border-left-color:var(--m4)">
+            <div class="fi-meta"><span class="fi-month-tag" style="background:#ECFDF5;color:#047857">Month 4 성장</span></div>
+            <div class="fi-text">성장 목표를 공개적으로 선언한 게 정말 도움이 됐어요. 혼자였으면 흐지부지됐을 텐데, 팀원들이 봐준다는 것만으로도 꾸준히 할 수 있었습니다. 책 14권 읽었어요 📚</div>
+            <button class="fi-like" onclick="tLike(this)">❤️ 22</button>
+          </div>
+          <div class="feeling-item" style="border-left-color:var(--m5)">
+            <div class="fi-meta"><span class="fi-month-tag" style="background:#FEF2F2;color:#B91C1C">Month 5 협업</span></div>
+            <div class="fi-text">마케팅팀과 런치 미팅을 했는데, 정말 신선한 시각을 많이 얻었어요. 일하면서 이렇게 다른 팀과 가까워질 기회가 없었는데, 이번 프로그램 덕분에 진짜 동료가 생긴 것 같아요.</div>
+            <button class="fi-like" onclick="tLike(this)">❤️ 18</button>
+          </div>
+          <div class="feeling-item" style="border-left-color:var(--m2)">
+            <div class="fi-meta"><span class="fi-month-tag" style="background:#F5F3FF;color:#6D28D9">Month 2 존중</span></div>
+            <div class="fi-text">존중·배려 지수를 보고 처음엔 충격을 받았는데, 팀장님이 솔직하게 피드백해주셔서 오히려 팀이 더 가까워진 것 같아요. 불편한 숫자가 더 나은 팀을 만들었습니다.</div>
+            <button class="fi-like" onclick="tLike(this)">❤️ 16</button>
+          </div>
+          <div class="feeling-item" style="border-left-color:var(--m1)">
+            <div class="fi-meta"><span class="fi-month-tag" style="background:#EFF6FF;color:#1D4ED8">Month 1 소통</span></div>
+            <div class="fi-text">첫 달이 제일 어색했어요. 리더 메시지를 읽으며 '이런 생각을 하시는 분이었구나' 처음 알게 되었고, 그때부터 보고가 편해졌습니다. 시작이 반이라는 말이 딱 맞았어요.</div>
+            <button class="fi-like" onclick="tLike(this)">❤️ 12</button>
+          </div>
+        </div>
+        <div class="feeling-input-area">
+          <div class="fi-prompt"><span>📝</span> 5개월 프로그램을 마치며, 가장 기억에 남는 순간이나 변화를 한 줄 남겨주세요</div>
+          <div class="month-tag-row">
+            <button class="mtag active" id="mtag-all" onclick="selMtag(this,&#39;all&#39;)" style="background:#0F172A;color:#fff;border-color:#0F172A">전체</button>
+            <button class="mtag" onclick="selMtag(this,&#39;m1&#39;)" style="--active:var(--m1)">Month 1</button>
+            <button class="mtag" onclick="selMtag(this,&#39;m2&#39;)" style="--active:var(--m2)">Month 2</button>
+            <button class="mtag" onclick="selMtag(this,&#39;m3&#39;)" style="--active:var(--m3)">Month 3</button>
+            <button class="mtag" onclick="selMtag(this,&#39;m4&#39;)" style="--active:var(--m4)">Month 4</button>
+            <button class="mtag" onclick="selMtag(this,&#39;m5&#39;)" style="--active:var(--m5)">Month 5</button>
+            <button class="mtag" onclick="selMtag(this,&#39;all2&#39;)" style="color:var(--decdark)">전체 여정</button>
+          </div>
+          <div class="fi-irow">
+            <input class="fi-input" id="feelingInput" type="text" placeholder="5개월의 여정을 한 줄로..." maxlength="150">
+            <button class="fi-send" onclick="addFeeling()">💬 소감 남기기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 5 : 내년 다짐 & 그라운드룰 ══════════════ -->
+  <div class="week-panel" id="week5">
+    <div class="card-intro"><strong>🌱 내년을 향한 다짐 &amp; 팀 그라운드룰 총정리</strong><br>5개월간 쌓아온 팀 그라운드룰 5개를 돌아보고, 내년 조직문화를 위한 다짐을 남겨주세요.</div>
+
+    <!-- 팀 그라운드룰 총정리 (5개월) -->
+    <div class="team-review-card">
+      <div class="tr-label">개발1팀 · 5개월 결산</div>
+      <div class="tr-title">우리 팀이 함께 쌓은 그라운드룰</div>
+      <div class="tr-desc" style="font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">5개월간 팀 세미나를 통해 확정한 그라운드룰을 클릭해서 확인해보세요.</div>
+
+      <div class="groundrule-mosaic" id="grMosaic">
+        <div class="gr-tile" onclick="toggleGR(this)" data-m="m1">
+          <div class="gr-m-num" style="color:#93C5FD;font-size:11px;margin-bottom:6px">Month 1 · 소통과 인정</div>
+          <div class="gr-m-name" style="font-size:16px;margin-bottom:10px">소통 그라운드룰</div>
+          <div class="gr-rule-preview" style="font-size:13px;line-height:1.7">업무 요청 시 첫 줄에 반드시 '목적'을 작성한다. 불확실해도 2일 이상 묵히지 않고 공유한다.</div>
+          <div class="gr-rule-full" style="font-size:13px;line-height:1.85">📌 우리 팀 소통 그라운드룰<br><br>① 업무 요청 시 Slack 첫 줄에 '목적'을 반드시 작성한다<br>② 미확정이어도 2일 이상 정보를 묵히지 않는다<br>③ 생각 차이가 있을 때 "어떤 이유에서 그렇게 생각했어?"로 먼저 묻는다<br>④ 매주 1:1 5분 대화로 소통 온도를 유지한다</div>
+        </div>
+        <div class="gr-tile" onclick="toggleGR(this)" data-m="m2">
+          <div class="gr-m-num" style="color:#C4B5FD;font-size:11px;margin-bottom:6px">Month 2 · 존중과 배려</div>
+          <div class="gr-m-name" style="font-size:16px;margin-bottom:10px">존중·배려 그라운드룰 + 존중 지도</div>
+          <div class="gr-rule-preview" style="font-size:13px;line-height:1.7">업무 요청 전 "요즘 어때요?" 한 마디 먼저. 직급 없이 이름으로 부르기.</div>
+          <div class="gr-rule-full" style="font-size:13px;line-height:1.85">📌 우리 팀 존중·배려 그라운드룰<br><br>① 업무 요청 전 상대방의 상황을 먼저 확인한다<br>② 직급 구분 없이 이름으로 부르는 것을 원칙으로 한다<br>③ 피드백 시 "이건 내 생각인데"로 시작한다<br>④ 회의 중 누구의 의견도 끊지 않는다<br><br>
+            <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:12px;margin-top:8px;text-align:center">
+              <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:6px">📊 팀 존중 지도</div>
+              <svg viewBox="0 0 160 140" width="100%" style="max-width:160px">
+                <polygon points="80,10 140,50 140,100 80,130 20,100 20,50" fill="rgba(139,92,246,.15)" stroke="#8B5CF6" stroke-width="1.5"></polygon>
+                <polygon points="80,35 118,58 118,90 80,108 42,90 42,58" fill="rgba(139,92,246,.1)" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="4,3"></polygon>
+                <polygon points="80,58 103,70 103,88 80,95 57,88 57,70" fill="rgba(139,92,246,.08)" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="2,2"></polygon>
+                <text x="80" y="7" text-anchor="middle" font-size="9" fill="#C4B5FD">소통</text>
+                <text x="143" y="52" font-size="9" fill="#C4B5FD">배려</text>
+                <text x="143" y="104" font-size="9" fill="#C4B5FD">공감</text>
+                <text x="80" y="138" text-anchor="middle" font-size="9" fill="#C4B5FD">신뢰</text>
+                <text x="2" y="104" font-size="9" fill="#C4B5FD">존중</text>
+                <text x="2" y="52" font-size="9" fill="#C4B5FD">경청</text>
+                <circle cx="80" cy="70" r="4" fill="#8B5CF6"></circle>
+              </svg>
+              <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:4px">팀 평균 존중 지수 3.8 / 5.0</div>
+            </div>
+          </div>
+        </div>
+        <div class="gr-tile" onclick="toggleGR(this)" data-m="m4">
+          <div class="gr-m-num" style="color:#6EE7B7;font-size:11px;margin-bottom:6px">Month 4 · 성장과 육성</div>
+          <div class="gr-m-name" style="font-size:16px;margin-bottom:10px">팀원들이 배운 것</div>
+          <div class="gr-rule-preview" style="font-size:13px;line-height:1.7">월 1회 베스트 지식 공유. 설명할 수 없으면 아는 게 아니다.</div>
+          <div class="gr-rule-full" style="font-size:13px;line-height:1.85">📝 팀원들이 이번 달 배운 것<br><br>
+            <div style="display:flex;flex-direction:column;gap:7px;margin-top:6px">
+              <div style="background:rgba(16,185,129,.1);border-radius:7px;padding:8px 10px;font-size:12px;color:rgba(255,255,255,.75)">"React useMemo, useCallback 올바른 사용법 — 성능 최적화의 핵심을 배웠습니다"</div>
+              <div style="background:rgba(16,185,129,.1);border-radius:7px;padding:8px 10px;font-size:12px;color:rgba(255,255,255,.75)">"Excel Power Query로 주 3시간 절약. 자동화가 이렇게 강력한 줄 몰랐어요"</div>
+              <div style="background:rgba(16,185,129,.1);border-radius:7px;padding:8px 10px;font-size:12px;color:rgba(255,255,255,.75)">"두괄식 보고서 작성법 — 결론부터 쓰면 의사결정이 정말 빨라집니다"</div>
+              <div style="background:rgba(16,185,129,.1);border-radius:7px;padding:8px 10px;font-size:12px;color:rgba(255,255,255,.75)">"GTD 생산성 시스템 — 머릿속 할 일을 외부로 꺼내면 집중력이 다릅니다"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 내년 다짐 -->
+    <div style="background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:18px 24px;background:linear-gradient(135deg,#1E3554,#0F1E35);border-bottom:1px solid rgba(255,255,255,.08)">
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px">✍️ 내년을 향한 나의 다짐</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.45)">5개월을 마치며, 내년 조직문화를 위해 내가 실천할 한 가지를 남겨주세요 (익명)</div>
+      </div>
+      <div style="padding:20px 24px">
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;max-height:250px;overflow-y:auto" id="pledgeList">
+          <div style="background:var(--bg);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--text);line-height:1.75;border-left:3px solid var(--gold)">내년에는 먼저 말을 거는 사람이 되겠습니다. 5개월 동안 배운 것은 먼저 다가가는 용기가 팀을 바꾼다는 것이에요.</div>
+          <div style="background:var(--bg);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--text);line-height:1.75;border-left:3px solid var(--m4)">월 1권 책 읽기를 내년에도 계속하겠습니다. 읽은 것을 팀원과 나누는 시간이 생각보다 훨씬 풍요로웠어요.</div>
+          <div style="background:var(--bg);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--text);line-height:1.75;border-left:3px solid var(--m2)">동료가 실수했을 때 "왜 그랬어?"가 아닌 "어떻게 도울까?"로 시작하는 사람이 되고 싶습니다.</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <input type="text" id="pledgeInput" style="flex:1;border:1.5px solid var(--border);border-radius:9px;padding:11px 14px;font-size:14px;font-family:&#39;Noto Sans KR&#39;,sans-serif;color:var(--text);outline:none;transition:border .2s" placeholder="내년 나의 다짐 한 줄..." onfocus="this.style.borderColor=&#39;var(--gold)&#39;" onblur="this.style.borderColor=&#39;var(--border)&#39;">
+          <button onclick="addPledge()" style="background:linear-gradient(135deg,#1E3554,#0F1E35);color:var(--gold2);border:none;border-radius:9px;padding:11px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:&#39;Noto Sans KR&#39;,sans-serif;white-space:nowrap">✍️ 다짐 남기기</button>
+        </div>
+        <div style="margin-top:16px;text-align:center;font-size:13px;color:var(--muted);font-style:italic">5개월간 함께해주셔서 감사합니다. 내년에도 GROUND IN : HIGH-5로 만나요 🎊</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const DB_H=172;let dbV=true;
+function toggleDB(){
+  const db=document.getElementById('db');const btn=document.getElementById('dbToggleBtn');
+  dbV=!dbV;
+  if(dbV){db.classList.remove('hidden');document.body.style.paddingTop=DB_H+'px';btn.textContent='▲ 대시보드 숨기기';}
+  else{db.classList.add('hidden');document.body.style.paddingTop='0';btn.textContent='▼ 대시보드 보이기';}
+}
+function tMi(b){b.classList.toggle('done');b.textContent=b.classList.contains('done')?'✓':'';}
+function tProg(btn){
+  const d=document.getElementById('progInline');d.classList.toggle('open');
+  btn.textContent=d.classList.contains('open')?'📊 접기 ▴':'📊 실/본부 상세 ▾';
+}
+function showWeek(n,btn){
+  document.querySelectorAll('.week-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.wn-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('week'+n).classList.add('active');btn.classList.add('active');
+}
+// 타임캡슐 개봉
+const capsuleColors={praise:['var(--m3)','#D97706'],growth:['var(--m4)','#047857']};
+function openCapsule(type){
+  const msgs=document.getElementById(type+'Msgs');
+  const btn=document.getElementById(type+'CapsuleBtn');
+  msgs.style.display='flex';msgs.style.flexDirection='column';
+  btn.style.display='none';
+  // confetti
+  for(let i=0;i<18;i++){
+    const c=document.createElement('div');
+    const colors=['#F59E0B','#10B981','#EF4444','#3B82F6','#8B5CF6','#FFD166'];
+    c.style.cssText=`position:fixed;top:${Math.random()*20}%;left:${Math.random()*100}%;width:8px;height:8px;border-radius:${Math.random()>0.5?'50%':'2px'};background:${colors[Math.floor(Math.random()*colors.length)]};z-index:9999;animation:confettiFall ${1.5+Math.random()}s ease-in-out forwards;pointer-events:none`;
+    document.body.appendChild(c);setTimeout(()=>c.remove(),3000);
+  }
+}
+// like
+function tLike(btn){
+  btn.classList.toggle('liked');const t=btn.textContent;const p=t.split(' ');
+  const n=parseInt(p[1])||parseInt(p[p.length-1])||0;
+  btn.textContent=btn.classList.contains('liked')?`❤️ ${n+1}`:`❤️ ${n-1}`;
+}
+// feeling
+let selMonth='all';
+function selMtag(btn,m){
+  document.querySelectorAll('.mtag').forEach(b=>{b.classList.remove('active');b.style.background='#fff';b.style.color='var(--decdark)';b.style.borderColor='var(--border)';});
+  btn.classList.add('active');btn.style.background='#0F172A';btn.style.color=m==='all'||m==='all2'?'#fff':'var(--gold2)';btn.style.borderColor='#0F172A';
+  selMonth=m;
+}
+const monthColors={m1:['#EFF6FF','var(--m1)'],m2:['#F5F3FF','var(--m2)'],m3:['#FFFBEB','var(--m3)'],m4:['#ECFDF5','var(--m4)'],m5:['#FEF2F2','var(--m5)'],all:['var(--bg)','var(--gold)'],all2:['var(--bg)','var(--dec)']};
+const monthLabels={m1:'Month 1 소통',m2:'Month 2 존중',m3:'Month 3 칭찬',m4:'Month 4 성장',m5:'Month 5 협업',all:'전체',all2:'전체 여정'};
+function addFeeling(){
+  const inp=document.getElementById('feelingInput');const v=inp.value.trim();if(!v)return;
+  const list=document.getElementById('feelingList');
+  const c=monthColors[selMonth]||['var(--bg)','var(--gold)'];
+  const lbl=monthLabels[selMonth]||'소감';
+  const item=document.createElement('div');item.className='feeling-item';item.style.borderLeftColor=c[1];
+  item.innerHTML=`<div class="fi-meta"><span class="fi-month-tag" style="background:${c[0]};color:${c[1]}">${lbl}</span></div><div class="fi-text">${v}</div><button class="fi-like" onclick="tLike(this)">❤️ 0</button>`;
+  list.prepend(item);inp.value='';
+  alert('💬 소감이 등록되었습니다! 감사합니다 🙏');
+}
+// groundrule mosaic
+function toggleGR(tile){
+  document.querySelectorAll('.gr-tile').forEach(t=>{if(t!==tile)t.classList.remove('open');});
+  tile.classList.toggle('open');
+}
+// pledge
+function addPledge(){
+  const inp=document.getElementById('pledgeInput');const v=inp.value.trim();if(!v)return;
+  const list=document.getElementById('pledgeList');
+  const item=document.createElement('div');
+  item.style.cssText='background:var(--bg);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--text);line-height:1.75;border-left:3px solid var(--gold)';
+  item.textContent=v;list.prepend(item);inp.value='';
+  alert('✅ 다짐이 등록되었습니다! 내년에도 함께해요 🌱');
+}
+</script>
+
+
+</body></html>
